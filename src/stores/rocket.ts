@@ -3,7 +3,7 @@ import type { Rocket } from "@/types/rocket";
 import { fetchRockets, fetchRocketById } from "@/services/rocket-service";
 import { generateLocaleId } from "@/utils/generate-locale-id";
 
-interface RocketState {
+export interface RocketState {
   data: Rocket[];
   loading: boolean;
   error: string | null;

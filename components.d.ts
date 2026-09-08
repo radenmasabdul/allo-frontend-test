@@ -7,6 +7,10 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ApiState: typeof import('./src/components/ApiState.vue')['default']
+    Card: typeof import('./src/components/Card.vue')['default']
+    FallbackImage: typeof import('./src/components/FallbackImage.vue')['default']
+    Filter: typeof import('./src/components/Filter.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
