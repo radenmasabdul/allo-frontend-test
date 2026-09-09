@@ -7,6 +7,7 @@ export function useRockets() {
   const router = useRouter();
 
   const failedImages = ref<Set<number>>(new Set());
+  const isOpenDialog = ref<boolean>(false);
 
   function onImageError(id: number) {
     failedImages.value.add(id);
@@ -20,6 +21,10 @@ export function useRockets() {
     router.push(`/rockets/${id}`);
   };
 
+  function handleOpen() {
+    isOpenDialog.value = true;
+  };
+
   onMounted(loadData);
 
   return {
@@ -28,5 +33,7 @@ export function useRockets() {
     onImageError,
     loadData,
     goToDetail,
+    isOpenDialog,
+    handleOpen,
   };
 };

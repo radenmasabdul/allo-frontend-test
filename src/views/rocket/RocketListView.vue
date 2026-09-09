@@ -3,9 +3,10 @@ import ApiState from '@/components/ApiState.vue';
 import Card from '@/components/Card.vue';
 import FallbackImage from '@/components/FallbackImage.vue';
 import Filter from '@/components/Filter.vue';
+import FormDialog from './components/FormDialog.vue';
 import { formatCost } from '@/utils/format-cost';
 import { formatDate } from '@/utils/format-date';
-import { useRockets } from '@/composable/useRockets';
+import { useRockets } from '@/views/rocket/composable/useRockets.js';
 
 const {
   failedImages,
@@ -13,6 +14,8 @@ const {
   loadData,
   onImageError,
   store,
+  isOpenDialog,
+  handleOpen,
 } = useRockets();
 </script>
 
@@ -22,18 +25,39 @@ const {
       SpaceX Rockets
     </h1>
 
-    <Filter
-      :model-value="store.filterText"
-      label="Filter rockets by name or description"
+    <v-row
+      align="center"
       class="mb-6"
-      @update:model-value="store.setFilter($event ?? undefined)"
-    />
+    >
+      <v-col>
+        <Filter
+          :model-value="store.filterText"
+          label="Filter rockets by name or description"
+          @update:model-value="store.setFilter($event ?? undefined)"
+        />
+      </v-col>
+
+      <v-col cols="auto">
+        <v-btn
+          color="primary"
+          prepend-icon="mdi-plus"
+          @click="handleOpen"
+        >
+          Add New
+        </v-btn>
+      </v-col>
+    </v-row>
 
     <ApiState
       :loading="store.loading"
       :error="store.error"
       @retry="loadData"
     >
+      <FormDialog
+        v-model="isOpenDialog"
+        mode="add"
+      />
+      
       <v-alert
         v-if="store.filteredData.length === 0"
         type="info"
