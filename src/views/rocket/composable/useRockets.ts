@@ -18,7 +18,7 @@ export function useRockets() {
   };
 
   function goToDetail(id: number) {
-    router.push(`/rockets/${id}`);
+    router.push(`/rocket/${id}`);
   };
 
   function handleOpen() {

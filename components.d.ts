@@ -13,6 +13,7 @@ declare module 'vue' {
     FallbackImage: typeof import('./src/components/FallbackImage.vue')['default']
     Filter: typeof import('./src/components/Filter.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    NavButton: typeof import('./src/components/NavButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
